@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "name": "Bitwarden Censor",
+            "file": "censor.js",
+            "appOptions": ["bitwarden_export_20231127205635.json"],
+        },
+    ]
+}
