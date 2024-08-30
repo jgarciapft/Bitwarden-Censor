@@ -1,1 +1,2 @@
+# Guard against committing Bitwarden vault export
 bitwarden_export*
