@@ -1,8 +1,9 @@
 const { readFileSync, writeFileSync } = require('fs')
 
-// Bitwarden Version: 2026.3.0 / Server Version: 2026.4.0
+// Bitwarden Version: 2026.5.1 / Server Version: 2026.6.1
+// !!! IMPORTANT: Always check the output for potential leaks and then patch this script
 
-const ITEM_TYPES_ENUM = {
+const VAULT_ITEM_TYPES = {
     LOGIN: 1,
     NOTE: 2,
     CARD: 3,
@@ -14,7 +15,7 @@ if (process.argv.slice(2).length !== 1) {
     process.exit(1)
 }
 
-// 1. Parse vault JSON vault export
+// 1. Parse JSON vault export
 
 let vault = undefined
 
@@ -41,7 +42,7 @@ const vaultItems = vault['items']
 // 2. Censor sensitive information
 
 vaultItems.forEach((item, index) => {
-    if (item['type'] !== ITEM_TYPES_ENUM.LOGIN) {
+    if (item['type'] !== VAULT_ITEM_TYPES.LOGIN) {
         delete vaultItems[index]
         return
     }
